@@ -1,0 +1,8 @@
+-- CreateTable
+CREATE TABLE "WordList" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "word" TEXT NOT NULL DEFAULT '',
+    "summary" TEXT NOT NULL DEFAULT '',
+    "desc" TEXT NOT NULL DEFAULT '',
+    "status" TEXT NOT NULL DEFAULT 'PENDING'
+);
