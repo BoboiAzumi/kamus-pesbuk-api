@@ -1,0 +1,24 @@
+name: Deploy to NATVPS
+on:
+  push:
+    branches: ["master"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Deploy With SSH
+        uses: appleboy/ssh-action@master
+        with: 
+          host: ${{secrets.HOST}}
+          port: ${{secrets.PORT}}
+          username: ${{secrets.USERNAME}}
+          password: ${{secrets.PASSWORD}}
+          script: |
+            cd ~/kamus-pesbuk-api
+            git pull origin master
+            git status
+            bun install
+            bunx pm2 restart KamusPesbukAPI
