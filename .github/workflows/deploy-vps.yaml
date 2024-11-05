@@ -9,6 +9,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Setup WARP
+        uses: fscarmen/warp-on-actions@v1.1
+        with:
+          stack: dual
+      
       - name: Deploy With SSH
         uses: appleboy/ssh-action@master
         with: 
